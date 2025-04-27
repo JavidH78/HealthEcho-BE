@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppThunk } from '../../app/store';
+import { AppThunk, RootState } from '../../app/store'; // Import RootState
 import { loginUser, registerUser } from './authAPI';
 import type { AuthState } from './types';
 import type { AuthResponse, LoginCredentials, RegisterData } from './authAPI';
@@ -63,6 +63,18 @@ export const {
 } = authSlice.actions;
 
 export default authSlice.reducer;
+
+// Selectors
+export const selectIsAuthenticated = (state: RootState) => state.auth.isAuthenticated;
+export const selectAuthStatus = (state: RootState) => {
+  // Determine status based on isLoading and error
+  if (state.auth.isLoading) return 'loading';
+  if (state.auth.error) return 'failed';
+  if (state.auth.isAuthenticated) return 'succeeded';
+  return 'idle'; // Initial state or after logout
+};
+export const selectUser = (state: RootState) => state.auth.user; // Add selector for user
+export const selectAuthError = (state: RootState) => state.auth.error; // Add selector for error
 
 // Thunk actions
 export const login = (credentials: LoginCredentials): AppThunk => async (dispatch) => {

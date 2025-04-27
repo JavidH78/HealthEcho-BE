@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import { store } from './app/store';
 import LoginPage from './features/auth/LoginPage';
 import RegisterPage from './features/auth/RegisterPage';
+import HomePage from './features/home/HomePage';
+import ProtectedRoute from './components/ProtectedRoute';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import './App.css';
@@ -44,7 +46,11 @@ function App() {
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/" element={<div>Home Page</div>} />
+            <Route path="/" element={
+              <ProtectedRoute>
+                <HomePage />
+              </ProtectedRoute>
+            } />
           </Routes>
         </Router>
       </Provider>
