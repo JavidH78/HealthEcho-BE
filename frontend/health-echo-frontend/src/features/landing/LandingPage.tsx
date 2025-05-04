@@ -1,45 +1,25 @@
 // src/features/landing/LandingPage.tsx
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import {
-  Container,
-  Typography,
-  Button,
-  Paper,
-  AppBar,
-  Toolbar,Box,
-  useTheme,
-    useMediaQuery,
-} from '@mui/material';
+import { Container, Typography, Button, Box, useTheme } from '@mui/material';
 import MonitorHeart from '@mui/icons-material/MonitorHeart';
-import TrendingUp from '@mui/icons-material/TrendingUp';
-import Group from '@mui/icons-material/Group';
-import Security from '@mui/icons-material/Security';
 import { keyframes } from '@mui/system';
-import Grid from '@mui/material/Grid';
 // Define keyframes for subtle animations
 const fadeIn = keyframes`
   from {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 `;
 
-const iconPulse = keyframes`
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-`;
 
 function LandingPage() {
   const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
-
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -56,10 +36,10 @@ function LandingPage() {
         }}
       >
         <Box sx={{ animation: `${fadeIn} 0.5s ease-out forwards`, opacity: 0 }}>
-          <MonitorHeart sx={{ fontSize: 80, color: theme.palette.primary.main, mb: 2, animation: `${iconPulse} 2.5s infinite ease-in-out` }} />
+          <MonitorHeart sx={{ fontSize: 80, color: theme.palette.primary.main, mb: 2 }} />
           <Typography
-            variant={isMobile ? "h3" : "h2"}
             component="h1"
+            variant= "h2"
             gutterBottom
             sx={{ fontWeight: 'bold', letterSpacing: '-1px' }}
           >
@@ -83,7 +63,7 @@ function LandingPage() {
               size="large"
               component={RouterLink}
               to="/register"
-              sx={{ px: 4, py: 1.5, animation: `${fadeIn} 0.7s ease-out 0.2s forwards`, opacity: 0 }}
+              sx={{ px: 4, py: 1.5, animation: `${fadeIn} 0.7s ease-out forwards`, opacity: 0 }}
             >
               Get Started Free
             </Button>
@@ -93,7 +73,7 @@ function LandingPage() {
               size="large"
               component={RouterLink}
               to="/login"
-              sx={{ px: 4, py: 1.5, animation: `${fadeIn} 0.7s ease-out 0.4s forwards`, opacity: 0 }}
+              sx={{ px: 4, py: 1.5, animation: `${fadeIn} 0.7s ease-out forwards`, opacity: 0 }}
             >
               Login
             </Button>
