@@ -1,8 +1,8 @@
 // src/features/landing/LandingPage.tsx
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { Container, Typography, Button, Box, useTheme } from '@mui/material';
-import MonitorHeart from '@mui/icons-material/MonitorHeart';
+import { Container, Typography, Button, Box, useTheme,Icon } from '@mui/material';
+import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
 import { keyframes } from '@mui/system';
 // Define keyframes for subtle animations
 const fadeIn = keyframes`
@@ -36,7 +36,9 @@ function LandingPage() {
         }}
       >
         <Box sx={{ animation: `${fadeIn} 0.5s ease-out forwards`, opacity: 0 }}>
-          <MonitorHeart sx={{ fontSize: 80, color: theme.palette.primary.main, mb: 2 }} />
+          <Icon sx={{ fontSize: 80, color: theme.palette.primary.main, mb: 2 }}>
+            <MonitorHeartIcon/>
+          </Icon>
           <Typography
             component="h1"
             variant= "h2"
