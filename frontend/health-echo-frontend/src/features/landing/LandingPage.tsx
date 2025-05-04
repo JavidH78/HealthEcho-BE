@@ -36,9 +36,7 @@ function LandingPage() {
         }}
       >
         <Box sx={{ animation: `${fadeIn} 0.5s ease-out forwards`, opacity: 0 }}>
-          <Icon sx={{ fontSize: 80, color: theme.palette.primary.main, mb: 2 }}>
-            <MonitorHeartIcon/>
-          </Icon>
+          <MonitorHeartIcon fontSize="large" color="primary"/>
           <Typography
             component="h1"
             variant= "h2"
