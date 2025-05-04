@@ -23,7 +23,7 @@ const LoginPage = () => {
     e.preventDefault();
     dispatch(login({ username, password }) as any)
       .unwrap()
-      .then(() => navigate('/'))
+      .then(() => navigate('/dashboard'))
       .catch((err: any) => console.error('Login failed:', err));
   };
 

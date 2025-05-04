@@ -28,7 +28,7 @@ const RegisterPage = () => {
     }
     dispatch(register({ username, email, password }) as any)
       .unwrap()
-      .then(() => navigate('/'))
+      .then(() => navigate('/dashboard'))
       .catch((err: any) => console.error('Registration failed:', err));
   };
 
