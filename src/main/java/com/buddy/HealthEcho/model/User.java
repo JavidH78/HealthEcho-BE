@@ -1,10 +1,13 @@
 package com.buddy.HealthEcho.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CurrentTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 //import javax.persistence.*;
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 @Entity
@@ -29,6 +32,19 @@ public class User {
     @JsonProperty("blood_group")
     @Column(nullable = false)
     private String blood_group;
+
+    @JsonProperty("age")
+    @Column(nullable = false)
+    private Integer age;
+
+    @JsonProperty("gender")
+    @Column(nullable = false)
+    private String gender;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @JsonProperty("dob")
+    @Column(nullable = false)
+    private Date dob;
 
     @Column(name = "created_at", updatable = false)
     @CurrentTimestamp
@@ -77,6 +93,32 @@ public class User {
     public void setBlood_group(String blood_group) {
         this.blood_group = blood_group;
     }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
