@@ -1,8 +1,9 @@
-package com.buddy.HealthEcho.service;
+package com.buddy.HealthEcho.ServiceImpl;
 
 import com.buddy.HealthEcho.DTO.UserDetailsDTO;
 import com.buddy.HealthEcho.model.User;
 import com.buddy.HealthEcho.repo.UserRepository;
+import com.buddy.HealthEcho.service.UserService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,17 +13,14 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
     public ResponseEntity<?> registerUser(User user) {
         Optional<User> opt = Optional.of(new User());
-        if(opt.isPresent()) {
-            userRepository.save(user);
-            return new ResponseEntity<>("User registered successfully!", HttpStatus.CREATED);
-        }
-        return new ResponseEntity<>("Error!", HttpStatus.BAD_REQUEST);
+        userRepository.save(user);
+        return new ResponseEntity<>("User registered successfully!", HttpStatus.CREATED);
     }
 
         public ResponseEntity<?> fetchdashboarddetails(Long user_id) {
