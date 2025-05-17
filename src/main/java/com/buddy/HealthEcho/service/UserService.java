@@ -13,7 +13,7 @@ import java.util.Optional;
 @Service
 public interface UserService {
 
-    public ResponseEntity<?> registerUser(User user);
+    ResponseEntity<?> registerUser(User user);
 
-    public ResponseEntity<?> fetchdashboarddetails(Long id);
+    ResponseEntity<?> fetchdashboarddetails(Long id);
 }

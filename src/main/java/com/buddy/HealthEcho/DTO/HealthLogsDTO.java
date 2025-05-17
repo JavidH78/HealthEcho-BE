@@ -1,68 +1,22 @@
-package com.buddy.HealthEcho.model;
+package com.buddy.HealthEcho.DTO;
 
-import jakarta.persistence.*;
+import com.buddy.HealthEcho.model.User;
 import lombok.Data;
-import org.hibernate.annotations.CurrentTimestamp;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-
-@Entity
 @Data
-@Table(name = "health_logs")
-public class HealthLogs {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long logId;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+public class HealthLogsDTO {
     private User user_id;
-
-    @Column(name = "log_date", nullable = false)
     private LocalDate logDate;
-
-    @Column(name = "symptom", nullable = false)
     private String symptom;
-
-    @Column(name = "medication", nullable = false)
     private String medication;
-
-    @Column(name = "exercise", nullable = false)
     private String exercise;
-
-
-    @Column(name = "diet", nullable = false)
     private String diet;
-
-    @Column(name = "blood_glucose")
     private String blood_glucose;
-
-    @Column(name = "blood_pressure")
     private String blood_pressure;
-
-    @Column(name = "oxygen_saturation", nullable = false)
     private String oxygen_saturation;
-
-    @Column(name = "pulse_rate", nullable = false)
     private Integer pulse_rate;
 
-    @Column(name = "created_at", updatable = false)
-    @CurrentTimestamp
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    @CurrentTimestamp
-    private LocalDateTime updatedAt;
-
-    public Long getLogId() {
-        return logId;
-    }
-
-    public void setLogId(Long logId) {
-        this.logId = logId;
-    }
 
     public User getUser_id() {
         return user_id;
@@ -142,21 +96,5 @@ public class HealthLogs {
 
     public void setPulse_rate(Integer pulse_rate) {
         this.pulse_rate = pulse_rate;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }
