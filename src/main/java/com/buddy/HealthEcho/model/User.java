@@ -29,6 +29,10 @@ public class User {
     @Column(nullable = false)
     private String name;
 
+    @JsonProperty("phone_number")
+    @Column(nullable = false)
+    private Long phoneNumber;
+
     @JsonProperty("blood_group")
     @Column(nullable = false)
     private String blood_group;
@@ -84,6 +88,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Long phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getBlood_group() {
