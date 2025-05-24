@@ -1,5 +1,6 @@
 package com.buddy.HealthEcho.service;
 
+import com.buddy.HealthEcho.DTO.LoginDetailsDTO;
 import com.buddy.HealthEcho.DTO.UserDetailsDTO;
 import com.buddy.HealthEcho.model.User;
 import com.buddy.HealthEcho.repo.UserRepository;
@@ -15,5 +16,7 @@ public interface UserService {
 
     ResponseEntity<?> registerUser(User user);
 
-    ResponseEntity<?> fetchdashboarddetails(Long id);
+    ResponseEntity<?> loginUser(LoginDetailsDTO user);
+
+    ResponseEntity<?> fetchDashboardDetails(Long id);
 }

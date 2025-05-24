@@ -1,5 +1,7 @@
 package com.buddy.HealthEcho.controller;
 
+import com.buddy.HealthEcho.DTO.LoginDetailsDTO;
+import com.buddy.HealthEcho.DTO.UserDetailsDTO;
 import com.buddy.HealthEcho.model.User;
 import com.buddy.HealthEcho.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,13 @@ public class UserController implements UserService{
         return userService.registerUser(user);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody LoginDetailsDTO user) {
+        return userService.loginUser(user);
+    }
+
     @GetMapping("/fetchdashboarddetails")
-    public ResponseEntity<?> fetchdashboarddetails(Long id) {
-        return userService.fetchdashboarddetails(id);
+    public ResponseEntity<?> fetchDashboardDetails(Long id) {
+        return userService.fetchDashboardDetails(id);
     }
 }
