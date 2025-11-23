@@ -1,34 +1,35 @@
 package com.buddy.HealthEcho.controller;
 
-import com.buddy.HealthEcho.DTO.LoginDetailsDTO;
-import com.buddy.HealthEcho.DTO.UserDetailsDTO;
 import com.buddy.HealthEcho.model.User;
+import com.buddy.HealthEcho.repo.UserRepository;
 import com.buddy.HealthEcho.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
 @RequestMapping("/api/users")
-public class UserController implements UserService{
+public class UserController {
 
     @Autowired
-    private UserService userService; // Assume you have a UserService to handle user-related logic
+    private UserService userService;
 
-    // POST method to register a new user
-    @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody User user) {
-        return userService.registerUser(user);
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity<?> loginUser(@RequestBody LoginDetailsDTO user) {
-        return userService.loginUser(user);
-    }
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/fetchdashboarddetails")
-    public ResponseEntity<?> fetchDashboardDetails(Long id) {
-        return userService.fetchDashboardDetails(id);
+    public ResponseEntity<?> fetchDashboardDetails(@AuthenticationPrincipal UserDetails userDetails) {
+        // username in our setup is the email
+        String email = userDetails.getUsername();
+
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+
+        // now call service using the authenticated user's id
+        return userService.fetchDashboardDetails(user.getUserId());
     }
 }
