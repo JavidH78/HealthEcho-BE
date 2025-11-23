@@ -1,7 +1,8 @@
-package com.buddy.HealthEcho.DTO;
+package com.buddy.HealthEcho.dto;
 
 import com.buddy.HealthEcho.model.User;
 import lombok.Data;
+
 import java.time.LocalDate;
 
 @Data

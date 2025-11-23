@@ -1,11 +1,9 @@
-package com.buddy.HealthEcho.DTO;
+package com.buddy.HealthEcho.dto;
 
 import lombok.Data;
 
 @Data
 public class UserDetailsDTO {
-    private String email;
-    private String password;
     private String name;
     private Integer age;
     private Long phoneNumber;
@@ -21,12 +19,6 @@ public class UserDetailsDTO {
         this.bloodGroup = bloodGroup;
         this.gender = gender;
         this.dob = dob;
-    }
-
-    //Login API
-    public UserDetailsDTO(String email, String password) {
-        this.email = email;
-        this.password = password;
     }
 
 }

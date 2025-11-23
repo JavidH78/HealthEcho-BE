@@ -1,12 +1,11 @@
-package com.buddy.HealthEcho.ServiceImpl;
+package com.buddy.HealthEcho.serviceImpl;
 
-import com.buddy.HealthEcho.DTO.HealthLogsDTO;
+import com.buddy.HealthEcho.dto.HealthLogsDTO;
 import com.buddy.HealthEcho.model.HealthLogs;
 import com.buddy.HealthEcho.model.User;
 import com.buddy.HealthEcho.repo.HealthLogsRepository;
 import com.buddy.HealthEcho.repo.UserRepository;
 import com.buddy.HealthEcho.service.HealthLogsService;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,7 @@ public class HealthLogsServiceImpl implements HealthLogsService {
     @Autowired
     private UserRepository userRepo;
 
-    public ResponseEntity<?> noteHealthLog(HealthLogsDTO note, Long id) {
+    public ResponseEntity<?> noteHealthLog(Long id, HealthLogsDTO note) {
 
         // Check if the user exists
         Optional<User> user = userRepo.findById(id);
