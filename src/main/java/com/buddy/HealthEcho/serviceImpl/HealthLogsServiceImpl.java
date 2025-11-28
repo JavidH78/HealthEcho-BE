@@ -39,7 +39,10 @@ public class HealthLogsServiceImpl implements HealthLogsService {
         healthLogs.setBlood_pressure(note.getBlood_pressure());
         healthLogs.setOxygen_saturation(note.getOxygen_saturation());
         healthLogs.setPulse_rate(note.getPulse_rate());
-
+        healthLogs.setSleep_cycle(note.getSleep_cycle());
+        healthLogs.setWater_intake(note.getWater_intake());
+        healthLogs.setSteps(note.getSteps());
+        
         healthRepo.save(healthLogs);
         return new ResponseEntity<>("Health Log Saved Successfully", HttpStatus.CREATED);
 
