@@ -48,6 +48,15 @@ public class HealthLogs {
     @Column(name = "pulse_rate", nullable = false)
     private Integer pulse_rate;
 
+    @Column(name = "steps", nullable = false)
+    private Long steps;
+
+    @Column(name = "water_intake", nullable = false)
+    private Double water_intake;
+
+    @Column(name = "sleep_cycle", nullable = false)
+    private Double sleep_cycle;
+
     @Column(name = "created_at", updatable = false)
     @CurrentTimestamp
     private LocalDateTime createdAt;
